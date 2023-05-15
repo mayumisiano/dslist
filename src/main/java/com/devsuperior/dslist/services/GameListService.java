@@ -33,8 +33,8 @@ public class GameListService {
         GameMinProjection obj = list.remove(sourceIndex);
         list.add(destinationIndex, obj);
 
-        int min = sourceIndex < destinationIndex ? sourceIndex : destinationIndex;
-        int max = sourceIndex < destinationIndex ? destinationIndex : destinationIndex;
+        int min = Math.min(sourceIndex, destinationIndex);
+        int max = Math.max(sourceIndex, destinationIndex);
 
         for(int i = min; i <= max ; i++) {
             gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
